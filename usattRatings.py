@@ -1,3 +1,6 @@
+# These data are the structural representations of the table found at
+# https://www.teamusa.org/usa-table-tennis/ratings/rating-system 
+# for the official USATT rating system
 lookup_table_keys = [(0, 12), (13, 37), (38, 62), (63, 87), (88, 112), 
     (113, 137), (138, 162), (163, 187), (188, 212), (213, 237), (238, 9999)]
 
@@ -30,6 +33,8 @@ lookup_table = {
     }
 }
 
+# This calculates a rating differential and determines if the game was an upset
+# and returns the appropriate value from the lookup table
 def get_adjustment(winner_rating, loser_rating):
     key = 'upset' if winner_rating < loser_rating else 'expected_result'
     score_differential = abs(winner_rating - loser_rating)
